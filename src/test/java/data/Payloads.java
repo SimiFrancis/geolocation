@@ -14,4 +14,12 @@ public class Payloads {
             throw new RuntimeException(e);
         }
     };
+
+    public Supplier<GeolocationRequest> invalidRequests = () -> {
+        try {
+            return JsonUtil.getPojoFromFile("src/test/resources/invalid_request.json", GeolocationRequest.class);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    };
 }
